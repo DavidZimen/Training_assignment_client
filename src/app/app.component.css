@@ -2,3 +2,12 @@ button {
     color: white;
     background-color: black;
 }
+
+nav {
+    background-color: grey;
+    font-style: initial;
+}
+
+li {
+    color: white;
+}
