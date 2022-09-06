@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/user/user';
+import { User } from '../user/user';
 import { UserService } from 'src/app/service/user-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-list',
@@ -11,12 +12,23 @@ export class UserListComponent implements OnInit {
 
   users: User[] = [];
 
+  /**
+   * Constructor for UserListComponent.
+   * @param userService - service which communicates with Spring boot backend through HttpClient
+   */
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.findAllUsers().subscribe(users => {
-      this.users = users;
-    })
+    this.getUsers();
   }
 
+  public getUsers(): void {
+    this.userService.findAllUsers().subscribe(
+      (responseUsers: User[]) => {
+        this.users = responseUsers},
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
 }
