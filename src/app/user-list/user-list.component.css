@@ -1,0 +1,14 @@
+.mat-header-cell {
+    color: blue;
+    width: max-content;
+    justify-content: center;
+}
+
+.mat-cell {
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+}
+

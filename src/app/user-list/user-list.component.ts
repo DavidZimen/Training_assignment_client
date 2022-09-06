@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
+  columnsToDisplay = ['personalNumber', 'name', 'surname', 'birthDate', 'street', 'houseNumber', 'city'];
 
   /**
    * Constructor for UserListComponent.

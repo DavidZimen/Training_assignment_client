@@ -14,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
    public findAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`{this.userUrl}/user/all`)
+    return this.http.get<User[]>(`${this.userUrl}/user/all`)
    }
 
    public findUserById(id: number): Observable<User> {
