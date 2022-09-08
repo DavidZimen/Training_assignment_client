@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user/user';
 import { UserService } from 'src/app/service/user-service.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { MatPaginator } from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { tap } from 'rxjs';
+import { UserDataSource } from '../service/user-data-source';
 
 @Component({
   selector: 'app-user-list',
@@ -10,8 +12,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class UserListComponent implements OnInit {
 
-  users: User[] = [];
+  users!: UserDataSource;
+  totalElements: number = 0;
   columnsToDisplay = ['personalNumber', 'name', 'surname', 'birthDate', 'street', 'houseNumber', 'city'];
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   /**
    * Constructor for UserListComponent.
@@ -20,16 +26,19 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.users = new UserDataSource(this.userService);
+    this.users.loadUsers();
   }
 
-  public getUsers(): void {
-    this.userService.findAllUsers().subscribe(
-      (responseUsers: User[]) => {
-        this.users = responseUsers},
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+  ngAfterViewInit() {
+    this.paginator?.page
+      .pipe(
+        tap(() => this.loadUsersPage())
+      )
+      .subscribe();
+  }
+
+  loadUsersPage() {
+    this.users?.loadUsers(this.paginator?.pageIndex, this.paginator?.pageSize);
   }
 }
