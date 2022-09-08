@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../user/user';
+import { HttpParams } from '@angular/common/http';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +15,13 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-   public findAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.userUrl}/user/all`)
+   public findUsers(pageNumber = 0, pageSize = 5): Observable<User[]> {
+    return this.http.get<User[]>(`${this.userUrl}/user/all`, { 
+      params: new HttpParams()
+        .set('pageNumber', pageNumber.toString())
+        .set('pageSize', pageSize.toString())
+    })
+    .pipe(tap());
    }
 
    public findUserById(id: number): Observable<User> {

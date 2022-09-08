@@ -4,8 +4,14 @@
     justify-content: center;
 }
 
-.mat-cell {
-    justify-content: center;
+th {
+    text-align: center;
+    vertical-align: center;
+}
+
+td {
+    text-align: center;
+    vertical-align: center;
 }
 
 table {
