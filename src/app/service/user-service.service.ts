@@ -15,14 +15,9 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-   public findUsers(pageNumber = 0, pageSize = 5): Observable<User[]> {
-    return this.http.get<User[]>(`${this.userUrl}/user/all`, { 
-      params: new HttpParams()
-        .set('pageNumber', pageNumber.toString())
-        .set('pageSize', pageSize.toString())
-    })
-    .pipe(tap());
-   }
+   public findUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.userUrl}/user/all`)
+  }
 
    public findUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.userUrl}//user/${id}`);
