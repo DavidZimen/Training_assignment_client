@@ -1,46 +1,103 @@
-<div class="container table-responsive">
-    <table class="table table-striped" mat-table [dataSource]="users">
-        <ng-container matColumnDef="personalNumber">
-            <th mat-header-cell *matHeaderCellDef>ID</th>
-            <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.personalNumber}}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.name }}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="surname">
-            <th mat-header-cell *matHeaderCellDef>Surname</th>
-            <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.surname }}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="birthDate">
-            <th mat-header-cell *matHeaderCellDef>Birthdate</th>
-            <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.birthDate }}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="street">
-            <th mat-header-cell *matHeaderCellDef>Street</th>
-            <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.address?.street }}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="houseNumber">
-            <th mat-header-cell *matHeaderCellDef>House number</th>
-            <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.address?.number }}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="city">
-            <th mat-header-cell *matHeaderCellDef>City</th>
-            <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.address?.city }}</td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-    </table>
+<div class="container">
 
-    <mat-paginator [length]="users.usersCount()"
-                   [pageSize]="5"
-                   [pageSizeOptions]="[5, 10, 15, 20]">
-    </mat-paginator>
+    <div class="container table-responsive table-light" style="padding-top:0.5%">
+        <article class="table-header">
+            <button id="addUserButton" mat-fab color="primary" aria-label="addButton" data-toggle="modal" data-tagret="#addUserModal">
+                <mat-icon>add</mat-icon>
+            </button>
+        </article>
+    
+        <table class="table" mat-table [dataSource]="users">
+            <ng-container matColumnDef="personalNumber">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.personalNumber}}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.name }}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="surname">
+                <th mat-header-cell *matHeaderCellDef>Surname</th>
+                <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.surname }}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="birthDate">
+                <th mat-header-cell *matHeaderCellDef>Birthdate</th>
+                <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.birthDate }}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="street">
+                <th mat-header-cell *matHeaderCellDef>Street</th>
+                <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.address?.street }}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="houseNumber">
+                <th mat-header-cell *matHeaderCellDef>House number</th>
+                <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.address?.number }}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="city">
+                <th mat-header-cell *matHeaderCellDef>City</th>
+                <td mat-cell class="description-cell" *matCellDef="let user">{{ user?.address?.city }}</td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+    
+        <mat-paginator [length]="totalElements"
+                       [pageSize]="3"
+                       [pageSizeOptions]="[5, 10, 15, 20]">
+        </mat-paginator>
+    </div>
+    
+    
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+    
+          <div class="modal-content">
+
+             <div class="modal-header">
+                <h5 class="modal-title" id="addEmployeeModalLabel">Pridať používateľa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+             </div>
+    
+             <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
+                <div class="form-group">
+                   <label for="name">Name</label>
+                   <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                   <label for="email">Email Address</label>
+                   <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                   <label for="phone">Job title</label>
+                   <input type="text" ngModel name="jobTitle" class="form-control" id="jobTile" placeholder="Job title" required>
+                </div>
+                <div class="form-group">
+                   <label for="phone">Phone</label>
+                   <input type="text" ngModel name="phone" class="form-control" id="phone" placeholder="Phone" required>
+                </div>
+                <div class="form-group">
+                   <label for="phone">Image URL</label>
+                   <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+                </div>
+    
+                <div class="modal-footer">
+                   <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                   <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+                </div>
+                </form>
+             </div>
+          </div>
+        </div>
+    </div>
 </div>
+

@@ -3,7 +3,10 @@ import { UserService } from 'src/app/service/user-service.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 import { tap } from 'rxjs';
-import { UserDataSource } from '../service/user-data-source';
+import { NgForm } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { User } from '../user/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -12,12 +15,11 @@ import { UserDataSource } from '../service/user-data-source';
 })
 export class UserListComponent implements OnInit {
 
-  users!: UserDataSource;
+  users = new MatTableDataSource<User>();
   totalElements: number = 0;
   columnsToDisplay = ['personalNumber', 'name', 'surname', 'birthDate', 'street', 'houseNumber', 'city'];
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  @ViewChild(MatPaginator, {static: true})paginator!: MatPaginator;
 
   /**
    * Constructor for UserListComponent.
@@ -26,19 +28,22 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.users = new UserDataSource(this.userService);
-    this.users.loadUsers();
+  }
+  
+  ngAfterViewInit(): void {
+    this.loadUsers();
+    this.users.paginator = this.paginator;
   }
 
-  ngAfterViewInit() {
-    this.paginator?.page
-      .pipe(
-        tap(() => this.loadUsersPage())
-      )
-      .subscribe();
+
+  loadUsers() {
+    this.userService.findUsers().subscribe(response => {
+      this.users.data = response;
+      this.totalElements = response.length;
+    });
   }
 
-  loadUsersPage() {
-    this.users?.loadUsers(this.paginator?.pageIndex, this.paginator?.pageSize);
+  onAddUser(addForm: NgForm): void {
+
   }
 }

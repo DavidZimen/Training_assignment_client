@@ -8,6 +8,10 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule,
+    MatIconModule,
+    FormsModule,
+    NoopAnimationsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent, UserListComponent, MatTableModule]
