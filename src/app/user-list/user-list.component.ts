@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user-service.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
-import { tap } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../user/user';
-import { Observable } from 'rxjs';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddDialogComponent } from '../add-dialog/add-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -21,18 +21,18 @@ export class UserListComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true})paginator!: MatPaginator;
 
+
   /**
    * Constructor for UserListComponent.
    * @param userService - service which communicates with Spring boot backend through HttpClient
    */
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public addDialog: MatDialog) { }
 
   ngOnInit(): void {
   }
   
   ngAfterViewInit(): void {
     this.loadUsers();
-    this.users.paginator = this.paginator;
   }
 
 
@@ -40,10 +40,25 @@ export class UserListComponent implements OnInit {
     this.userService.findUsers().subscribe(response => {
       this.users.data = response;
       this.totalElements = response.length;
+      this.users.paginator = this.paginator;
     });
   }
 
   onAddUser(addForm: NgForm): void {
-
   }
+
+  openAddDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      id: 1,
+      title: 'Angular For Beginners'
+    };
+
+    this.addDialog.open(AddDialogComponent, dialogConfig);
+  }
+
 }
