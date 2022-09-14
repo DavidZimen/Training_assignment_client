@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../user/user';
-import { HttpParams } from '@angular/common/http';
-import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

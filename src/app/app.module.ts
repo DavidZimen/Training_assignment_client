@@ -3,20 +3,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { UserListComponent } from 'src/app/user-list/user-list.component';
 import { UserService } from './service/user-service.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { AddDialogComponent } from './add-dialog/add-dialog.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function httpTranslateLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    AddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,10 +38,24 @@ import { FormsModule } from '@angular/forms'
     MatSortModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
+    MatGridListModule,
     FormsModule,
-    NoopAnimationsModule
+    ReactiveFormsModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'sk',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
+  exports: [TranslateModule],
   providers: [UserService],
-  bootstrap: [AppComponent, UserListComponent, MatTableModule]
+  bootstrap: [AppComponent, UserListComponent, MatTableModule, MatPaginatorModule],
+  entryComponents: [AddDialogComponent]
 })
 export class AppModule { }

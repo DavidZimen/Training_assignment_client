@@ -1,0 +1,28 @@
+{
+    "TITLE": "User managment",
+    "USER_INFO": {
+        "NAME": "Name",
+        "SURNAME": "Surname",
+        "BIRTHDATE": "Birthdate",
+        "STREET": "Street",
+        "HOUSENUMBER": "House number",
+        "CITY": "City"
+    },
+    "BUTTONS": {
+        "CLOSE" : "Close",
+        "SAVE" : "Save",
+        "ADD" : "Add",
+        "UPDATE" : "Update",
+        "DELETE" : "Delete",
+        "CREATE": "Create"
+    },
+    "LANGUAGES": {
+        "EN": "English",
+        "SK": "Slovak"
+    },
+    "DIALOGS": {
+        "REMOVE_USER": "Remove user",
+        "CREATE_USER": "Create user",
+        "UPDATE_USER": "Update user"
+    }
+}

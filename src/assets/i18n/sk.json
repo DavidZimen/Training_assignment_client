@@ -1,0 +1,28 @@
+{
+    "TITLE": "Správca užívateľov",
+    "USER_INFO": {
+        "NAME": "Meno",
+        "SURNAME": "Priezvisko",
+        "BIRTHDATE": "Dátum narodenia",
+        "STREET": "Ulica",
+        "HOUSENUMBER": "Číslo domu",
+        "CITY": "Mesto"
+    },
+    "BUTTONS": {
+        "CLOSE" : "Zavrieť",
+        "SAVE" : "Uložiť",
+        "ADD" : "Pridať",
+        "UPDATE" : "Aktualizovať",
+        "DELETE" : "Zmazať",
+        "CREATE": "Vytvoriť"
+    },
+    "LANGUAGES": {
+        "EN": "Anglicky",
+        "SK": "Slonensky"
+    },
+    "DIALOGS": {
+        "REMOVE_USER": "Odstrániť užívateľa",
+        "CREATE_USER": "Vytvoriť užívateľa",
+        "UPDATE_USER": "Upraviť užívateľa"
+    }
+}

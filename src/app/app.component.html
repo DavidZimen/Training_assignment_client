@@ -1,4 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light">
-  <a class="navbar-brand" id="title">Správca používateľov</a>
+  <a class="navbar-brand" id="title">{{'TITLE' | translate}}</a>
+
+  <div class="language-picker-area">
+    <select (change)="selectLanguage($event)" class="language-picker">
+      <option value="sk">{{ 'LANGUAGES.SK' | translate }}</option>
+      <option value="en">{{ 'LANGUAGES.EN' | translate }}</option>
+    </select>
+  </div>
+
 </nav>
-<app-user-list></app-user-list>
+
+<app-user-list></app-user-list> 

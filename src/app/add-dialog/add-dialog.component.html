@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>{{ 'DIALOGS.CREATE_USER' | translate }}</h2>
+
+<mat-dialog-content [formGroup]="form">
+  
+        <mat-form-field>
+            <input matInput
+                    placeholder="{{ 'USER_INFO.NAME' | translate }}"
+                    formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput
+                    placeholder="{{ 'USER_INFO.SURNAME' | translate }}"
+                    formControlName="surname">
+        </mat-form-field> 
+
+        <mat-form-field>
+            <input matInput
+                    placeholder="{{ 'USER_INFO.BIRTHDATE' | translate }}"
+                    formControlName="birthDate">
+        </mat-form-field> 
+    
+
+        <mat-form-field>
+            <input matInput
+                    placeholder="{{ 'USER_INFO.STREET' | translate }}"
+                    formControlName="street">
+        </mat-form-field> 
+
+        <mat-form-field>
+            <input matInput
+                    placeholder="{{ 'USER_INFO.HOUSENUMBER' | translate }}"
+                    formControlName="houseNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput
+                    placeholder="{{ 'USER_INFO.CITY' | translate }}"
+                    formControlName="city">
+        </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

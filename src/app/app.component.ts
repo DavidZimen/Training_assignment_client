@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Training_assignment_client';
+
+  constructor(public translateService: TranslateService) {
+  }
+
+  selectLanguage(event: any): void {
+    this.translateService.use(event.target.value);
+  }
+
 }
