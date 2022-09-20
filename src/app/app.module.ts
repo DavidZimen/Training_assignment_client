@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { UserListComponent } from 'src/app/user-list/user-list.component';
+import { UserListComponent } from '../app/components/user-list/user-list.component';
 import { UserService } from './service/user-service.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table'
@@ -9,15 +9,21 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { AddDialogComponent } from './add-dialog/add-dialog.component';
+import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { ConfDialogComponent } from './dialogs/conf-dialog/conf-dialog.component'
 
 export function httpTranslateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -27,11 +33,14 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     UserListComponent,
-    AddDialogComponent
+    AddDialogComponent,
+    UserInfoComponent,
+    ConfDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    RouterModule,
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
@@ -39,6 +48,8 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
@@ -51,10 +62,11 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
         useFactory: httpTranslateLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    AppRoutingModule
   ],
   exports: [TranslateModule],
-  providers: [UserService],
+  providers: [UserService, MatDatepickerModule],
   bootstrap: [AppComponent, UserListComponent, MatTableModule, MatPaginatorModule],
   entryComponents: [AddDialogComponent]
 })

@@ -1,0 +1,35 @@
+{
+    "TITLE": "Benutzerverwaltung",
+    "ACTIONS": "Aktionen",
+    "USER_INFO": {
+        "NAME": "Name",
+        "SURNAME": "Familienname",
+        "BIRTHDATE": "Geburtsdatum",
+        "STREET": "Straße",
+        "HOUSENUMBER": "Hausnummer",
+        "CITY": "Stadt"
+    },
+    "BUTTONS": {
+        "CLOSE" : "schließen",
+        "SAVE" : "Speichern",
+        "ADD" : "Hinzufügen",
+        "UPDATE" : "Aktualisieren",
+        "DELETE" : "Löschen",
+        "CREATE": "Schaffen"
+    },
+    "LANGUAGES": {
+        "EN": "Englisch",
+        "SK": "Slowakisch",
+        "DE": "Deutsch"
+    },
+    "DIALOGS": {
+        "INFO_USER": "Benutzer informacion",
+        "REMOVE_USER": "Benutzer entfernen",
+        "CREATE_USER": "Benutzer erstellen",
+        "UPDATE_USER": "Benutzer aktualisieren"
+    },
+    "PAGINATOR": {
+        "ITEMS": "Objekte pro Seite",
+        "OF": "von"
+    }
+}

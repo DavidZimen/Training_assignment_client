@@ -1,5 +1,6 @@
 {
     "TITLE": "User managment",
+    "ACTIONS": "Actions",
     "USER_INFO": {
         "NAME": "Name",
         "SURNAME": "Surname",
@@ -18,11 +19,17 @@
     },
     "LANGUAGES": {
         "EN": "English",
-        "SK": "Slovak"
+        "SK": "Slovak",
+        "DE": "German"
     },
     "DIALOGS": {
+        "INFO_USER": "User information",
         "REMOVE_USER": "Remove user",
         "CREATE_USER": "Create user",
         "UPDATE_USER": "Update user"
+    },
+    "PAGINATOR": {
+        "ITEMS": "Items per page",
+        "OF": "of"
     }
 }

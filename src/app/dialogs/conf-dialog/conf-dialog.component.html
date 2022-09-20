@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{ 'DIALOGS.REMOVE_USER' | translate }}</h2>
+
+<mat-dialog-content>
+    <p>Ste si istý že chcete vymazať používateľa ?</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">{{ 'BUTTONS.CLOSE' | translate }}</button>
+    <button class="mat-raised-button" id="deleteButton" (click)="onSubmit()" type="submit" color="warm">{{ 'BUTTONS.DELETE' | translate }}</button>
+</mat-dialog-actions>

@@ -1,5 +1,6 @@
 {
     "TITLE": "Správca užívateľov",
+    "ACTIONS": "Akcie",
     "USER_INFO": {
         "NAME": "Meno",
         "SURNAME": "Priezvisko",
@@ -18,11 +19,17 @@
     },
     "LANGUAGES": {
         "EN": "Anglicky",
-        "SK": "Slonensky"
+        "SK": "Slonensky",
+        "DE": "Nemecky"
     },
     "DIALOGS": {
+        "INFO_USER": "Informácie o užívateľovi",
         "REMOVE_USER": "Odstrániť užívateľa",
         "CREATE_USER": "Vytvoriť užívateľa",
         "UPDATE_USER": "Upraviť užívateľa"
+    },
+    "PAGINATOR": {
+        "ITEMS": "Položiek na stránku",
+        "OF": "z"
     }
 }

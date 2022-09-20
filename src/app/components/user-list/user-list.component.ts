@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user-service.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { User } from '../user/user';
+import { User } from '../../user/user';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddDialogComponent } from '../add-dialog/add-dialog.component';
+import { AddDialogComponent } from '../../dialogs/add-dialog/add-dialog.component';
+import { Observable } from 'rxjs';
+import { ConfDialogComponent } from 'src/app/dialogs/conf-dialog/conf-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -16,8 +17,9 @@ import { AddDialogComponent } from '../add-dialog/add-dialog.component';
 export class UserListComponent implements OnInit {
 
   users = new MatTableDataSource<User>();
+  infoUser!: Observable<User>;
   totalElements: number = 0;
-  columnsToDisplay = ['personalNumber', 'name', 'surname', 'birthDate', 'street', 'houseNumber', 'city'];
+  columnsToDisplay = ['personalNumber', 'name', 'surname', 'actions'];
 
   @ViewChild(MatPaginator, {static: true})paginator!: MatPaginator;
 
@@ -33,10 +35,14 @@ export class UserListComponent implements OnInit {
   
   ngAfterViewInit(): void {
     this.loadUsers();
+
+    this.addDialog.afterAllClosed.subscribe(() => {
+      this.loadUsers();
+    });
   }
 
 
-  loadUsers() {
+  loadUsers(): void {
     this.userService.findUsers().subscribe(response => {
       this.users.data = response;
       this.totalElements = response.length;
@@ -44,7 +50,8 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  onAddUser(addForm: NgForm): void {
+  getUserInRowInfo(row: any): void {
+    this.infoUser = this.userService.findUserById(row.id);
   }
 
   openAddDialog(): void {
@@ -61,4 +68,16 @@ export class UserListComponent implements OnInit {
     this.addDialog.open(AddDialogComponent, dialogConfig);
   }
 
+  onDeleteButton(userId: number): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      id: userId
+    };
+
+    this.addDialog.open(ConfDialogComponent, dialogConfig);
+  }
 }
