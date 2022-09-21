@@ -22,12 +22,17 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
-import { ConfDialogComponent } from './dialogs/conf-dialog/conf-dialog.component'
+import { ConfDialogComponent } from './dialogs/conf-dialog/conf-dialog.component';
+import { RouterModule, Routes } from '@angular/router';
 
 export function httpTranslateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
 }
+
+const routes: Routes = [
+  { path: 'users-list', component: UserListComponent},
+  { path: 'user-info', component: UserInfoComponent }
+];
 
 @NgModule({
   declarations: [
@@ -63,7 +68,8 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routes)
   ],
   exports: [TranslateModule],
   providers: [UserService, MatDatepickerModule],

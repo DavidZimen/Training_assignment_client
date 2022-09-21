@@ -34,6 +34,7 @@ export class AddDialogComponent implements OnInit {
         console.log(err);
       });
     this.dialogRef.close();
+    this.userService.findUsers();
   }
 
   close(): void {

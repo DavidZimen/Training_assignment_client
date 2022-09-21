@@ -10,7 +10,7 @@
         "CITY": "Stadt"
     },
     "BUTTONS": {
-        "CLOSE" : "schließen",
+        "CLOSE" : "Schließen",
         "SAVE" : "Speichern",
         "ADD" : "Hinzufügen",
         "UPDATE" : "Aktualisieren",
