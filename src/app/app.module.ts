@@ -17,35 +17,28 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
+import { AddUpdateDialogComponent } from './dialogs/add-update-dialog/add-update-dialog.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConfDialogComponent } from './dialogs/conf-dialog/conf-dialog.component';
-import { RouterModule, Routes } from '@angular/router';
+
 
 export function httpTranslateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
 }
-
-const routes: Routes = [
-  { path: 'users-list', component: UserListComponent},
-  { path: 'user-info', component: UserInfoComponent }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    AddDialogComponent,
+    AddUpdateDialogComponent,
     UserInfoComponent,
     ConfDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule,
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
@@ -68,12 +61,11 @@ const routes: Routes = [
         deps: [HttpClient]
       }
     }),
-    AppRoutingModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   exports: [TranslateModule],
   providers: [UserService, MatDatepickerModule],
   bootstrap: [AppComponent, UserListComponent, MatTableModule, MatPaginatorModule],
-  entryComponents: [AddDialogComponent]
+  entryComponents: [AddUpdateDialogComponent]
 })
 export class AppModule { }

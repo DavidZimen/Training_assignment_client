@@ -4,7 +4,7 @@ import { User } from "../user/user";
 export interface Address {
     id: number;
     street: string;
-    number: number;
+    houseNumber: number;
     city: string;
     user: User;
 }

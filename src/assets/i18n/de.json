@@ -2,6 +2,7 @@
     "TITLE": "Benutzerverwaltung",
     "ACTIONS": "Aktionen",
     "USER_INFO": {
+        "PERSONAL_NUMBER": "Persönliche Nummer",
         "NAME": "Name",
         "SURNAME": "Familienname",
         "BIRTHDATE": "Geburtsdatum",
@@ -15,7 +16,8 @@
         "ADD" : "Hinzufügen",
         "UPDATE" : "Aktualisieren",
         "DELETE" : "Löschen",
-        "CREATE": "Schaffen"
+        "CREATE": "Schaffen",
+        "BACK": "Zurück"
     },
     "LANGUAGES": {
         "EN": "Englisch",

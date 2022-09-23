@@ -1,2 +1,20 @@
-<h1>{{ 'DIALOGS.INFO_USER' | translate}}</h1>
-<button type="button" ng-click="onBackClicked()"></button>
+<div class="container">
+    <h1>{{ 'DIALOGS.INFO_USER' | translate}}</h1>
+
+    <div class="row">
+        <label>{{ 'USER_INFO.NAME' | translate}}</label>
+        <h2> {{ detailedUser?.name }} </h2>
+        <label>{{ 'USER_INFO.SURNAME' | translate}}</label>
+        <h2> {{ detailedUser?.surname }} </h2>
+        <label>{{ 'USER_INFO.BIRTHDATE' | translate}}</label>
+        <h2> {{ detailedUser?.birthDate }} </h2>
+        <label>{{ 'USER_INFO.STREET' | translate}}</label>
+        <h2> {{ detailedUser?.address?.street }} </h2>
+        <label>{{ 'USER_INFO.HOUSENUMBER' | translate}}</label>
+        <h2> {{ detailedUser?.address?.houseNumber }} </h2>
+        <label>{{ 'USER_INFO.CITY' | translate}}</label>
+        <h2> {{ detailedUser?.address?.city }} </h2>
+    </div>
+
+    <button type="button" (click)="onBackClicked()">{{ 'BUTTONS.BACK' | translate }}</button>
+</div>

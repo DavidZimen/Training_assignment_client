@@ -2,6 +2,7 @@
     "TITLE": "Správca užívateľov",
     "ACTIONS": "Akcie",
     "USER_INFO": {
+        "PERSONAL_NUMBER": "Osobné číslo",
         "NAME": "Meno",
         "SURNAME": "Priezvisko",
         "BIRTHDATE": "Dátum narodenia",
@@ -15,7 +16,8 @@
         "ADD" : "Pridať",
         "UPDATE" : "Aktualizovať",
         "DELETE" : "Zmazať",
-        "CREATE": "Vytvoriť"
+        "CREATE": "Vytvoriť",
+        "BACK": "Späť"
     },
     "LANGUAGES": {
         "EN": "Anglicky",

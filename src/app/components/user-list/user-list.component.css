@@ -102,3 +102,9 @@ td {
     color: black;
     border: none !important;
 }
+
+#infoUserButton {
+    background-color: white;
+    color:greenyellow;
+    border: none !important;
+}

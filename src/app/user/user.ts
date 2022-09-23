@@ -7,4 +7,5 @@ export interface User {
     surname: string;
     birthDate: Date;
     address: Address;
+    version: number;
 }

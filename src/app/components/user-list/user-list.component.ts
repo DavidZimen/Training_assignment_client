@@ -5,9 +5,10 @@ import { ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../user/user';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddDialogComponent } from '../../dialogs/add-dialog/add-dialog.component';
+import { AddUpdateDialogComponent } from '../../dialogs/add-update-dialog/add-update-dialog.component';
 import { Observable } from 'rxjs';
 import { ConfDialogComponent } from 'src/app/dialogs/conf-dialog/conf-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -28,10 +29,15 @@ export class UserListComponent implements OnInit {
    * Constructor for UserListComponent.
    * @param userService - service which communicates with Spring boot backend through HttpClient
    */
-  constructor(private userService: UserService, public addDialog: MatDialog) { }
+  constructor(
+    private userService: UserService, 
+    public addDialog: MatDialog,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-  }
+    
+   }
   
   ngAfterViewInit(): void {
     this.loadUsers();
@@ -50,8 +56,9 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  getUserInRowInfo(row: any): void {
-    this.infoUser = this.userService.findUserById(row.id);
+  navToDetails(id: number): void {
+    console.log(id);
+    this.router.navigate(['user-info', id]);
   }
 
   openAddDialog(): void {
@@ -61,11 +68,25 @@ export class UserListComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      id: 1,
-      title: 'Angular For Beginners'
+      updateUserId: -1,
+      add: true
+    }
+
+    this.addDialog.open(AddUpdateDialogComponent, dialogConfig);
+  }
+
+  openUpdateDialog(userId: number): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      updateUserId: userId,
+      add: false
     };
 
-    this.addDialog.open(AddDialogComponent, dialogConfig);
+    this.addDialog.open(AddUpdateDialogComponent, dialogConfig);
   }
 
   onDeleteButton(userId: number): void {
@@ -80,4 +101,6 @@ export class UserListComponent implements OnInit {
 
     this.addDialog.open(ConfDialogComponent, dialogConfig);
   }
+
+  doNothing(): void { }
 }

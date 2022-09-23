@@ -2,6 +2,7 @@
     "TITLE": "User managment",
     "ACTIONS": "Actions",
     "USER_INFO": {
+        "PERSONAL_NUMBER": "Personal number",
         "NAME": "Name",
         "SURNAME": "Surname",
         "BIRTHDATE": "Birthdate",
@@ -15,7 +16,8 @@
         "ADD" : "Add",
         "UPDATE" : "Update",
         "DELETE" : "Delete",
-        "CREATE": "Create"
+        "CREATE": "Create",
+        "BACK": "Back"
     },
     "LANGUAGES": {
         "EN": "English",
