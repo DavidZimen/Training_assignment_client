@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light">
-  <a class="navbar-brand" id="title">{{'TITLE' | translate}}</a>
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">{{ 'TITLE' | translate}}</span>
+  </div>
 
   <div class="language-picker-area">
     <select (change)="selectLanguage($event)" class="language-picker">
