@@ -23,18 +23,27 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConfDialogComponent } from './dialogs/conf-dialog/conf-dialog.component';
-
+import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export function httpTranslateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
 }
+
+const routes: Routes = [
+  { path: '', redirectTo: 'users-list', pathMatch: 'full' }, 
+  { path: 'user-info/:id', component: UserInfoComponent },
+  { path: 'users-list', component: UserListComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     AddUpdateDialogComponent,
     UserInfoComponent,
-    ConfDialogComponent
+    ConfDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +74,7 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
   ],
   exports: [TranslateModule],
   providers: [UserService, MatDatepickerModule],
-  bootstrap: [AppComponent, UserListComponent, MatTableModule, MatPaginatorModule],
+  bootstrap: [AppComponent],
   entryComponents: [AddUpdateDialogComponent]
 })
 export class AppModule { }

@@ -41,12 +41,12 @@ export class AddUpdateDialogComponent implements OnInit {
         if (data.updateUserId !== -1) {
           this.userService.findUserById(data.updateUserId).subscribe(user => {
             this.updateUser = user;
+            console.log(user.version);
           });
         }
   }
 
   ngOnInit(): void {
-    console.log(this.updateUser);
   }
 
   save(): void {
@@ -61,9 +61,10 @@ export class AddUpdateDialogComponent implements OnInit {
 
   onSubmitUpdate(): void {
     if (this.updateUser !== undefined) {
+      console.log(this.updateUser);
       this.userService.updateUser(this.updateUser).subscribe(data => {});
       this.dialogRef.close();
-      this.userService.findUsers();
+      //this.userService.findUsers();
     }
   }
 

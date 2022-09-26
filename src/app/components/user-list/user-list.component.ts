@@ -13,7 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  styleUrls: ['./user-list.component.css'],
+  providers: [UserService]
 })
 export class UserListComponent implements OnInit {
 
@@ -37,7 +38,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     
-   }
+  }
   
   ngAfterViewInit(): void {
     this.loadUsers();
