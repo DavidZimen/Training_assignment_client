@@ -33,5 +33,19 @@
     "PAGINATOR": {
         "ITEMS": "Položiek na stránku",
         "OF": "z"
+    }, 
+    "ERRORS": {
+        "UPDATE": "Pri upravovaní došlo ku chybe. Skúste to znova neskôr, prosím."
+    },
+    "VALID": {
+        "NAME": "Meno je povinné.",
+        "SURNAME": "Priezvisko je povinné.",
+        "BIRTHDATE": "Dátum narodenia je povinný.",
+        "STREET": "Ulica je povinná.",
+        "HOUSENUMBER": {
+            "REQ": "Číslo domu je povinné.",
+            "MIN": "Minimálna hodnota je 1."
+        },
+        "CITY": "Mesto je povinné."
     }
 }

@@ -33,5 +33,19 @@
     "PAGINATOR": {
         "ITEMS": "Items per page",
         "OF": "of"
+    }, 
+    "ERRORS": {
+        "UPDATE": "An error occurred while updating. Please try again later."
+    },
+    "VALID": {
+        "NAME": "Name is required.",
+        "SURNAME": "Surname is required.",
+        "BIRTHDATE": "Birthdate is required.",
+        "STREET": "Street is required.",
+        "HOUSENUMBER": {
+            "REQ": "House number is required.",
+            "MIN": "Minimal values is 1."
+        },
+        "CITY": "City is required."
     }
 }

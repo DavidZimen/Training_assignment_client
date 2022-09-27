@@ -1,17 +1,32 @@
-nav {
+header {
     background-color: black;
     font-style: initial;
-} 
-
-#title {
-    margin-left: 2%;
-    margin-right: 2%;
+    height: 50px;
 } 
 
 span {
     color: white;
+    font-size: 200%;
+    margin-left: 2%;
+    padding: 8px;
 }
 
 span:hover {
     color: white
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.language-picker-area {
+    display: flex;
+    justify-content: right;
+}
+
+select {
+    height: 25px;
+    margin-top: 12.5px;
+    margin-right: 2%;
 }

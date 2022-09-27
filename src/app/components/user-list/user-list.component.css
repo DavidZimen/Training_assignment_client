@@ -2,6 +2,18 @@ table {
     width: 100%;
 }
 
+#tab-header {
+    display: flex;
+    justify-content: right;
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px ;
+}
+
+::placeholder {
+    color:grey;
+}
+
 td {
     text-align: center;
 }
@@ -82,7 +94,7 @@ td {
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
-  }
+}
 
 #addUserButton {
     background-color: black;

@@ -34,7 +34,9 @@ export class UserListComponent implements OnInit {
     private userService: UserService, 
     public addDialog: MatDialog,
     private router: Router
-  ) { }
+  ) { 
+    this.router.canceledNavigationResolution = 'computed';
+  }
 
   ngOnInit(): void {
     
@@ -102,6 +104,11 @@ export class UserListComponent implements OnInit {
 
     this.addDialog.open(ConfDialogComponent, dialogConfig);
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.users.filter = filterValue.trim().toLowerCase();
+}
 
   doNothing(): void { }
 }

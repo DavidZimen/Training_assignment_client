@@ -23,10 +23,9 @@ id?: number;
       this.id = params['id'];
       this.userService.findUserById(params['id']).subscribe(user => {
         this.detailedUser = user;
+        console.log(user);
       });
     });
-
-    console.log(this.id);
   }
 
   ngOnInit(): void {
@@ -36,6 +35,6 @@ id?: number;
   }
 
   onBackClicked(): void {
-    this.router.navigate(['']);
+    this.router.navigate([''], {replaceUrl: true});
   }
 }

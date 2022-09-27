@@ -5,7 +5,7 @@ import { UserService } from 'src/app/service/user-service.service';
 import { UserRequest } from 'src/app/user/user-request';
 import { User } from 'src/app/user/user';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 export const APP_DATE_FORMATS = {
   parse: {
@@ -35,7 +35,7 @@ export class AddUpdateDialogComponent implements OnInit {
       private dialogRef: MatDialogRef<AddUpdateDialogComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any,
       private userService: UserService,
-      private fb: FormBuilder
+      private translateService: TranslateService
   ) {
         this.add = data.add;
         if (data.updateUserId !== -1) {
@@ -61,10 +61,17 @@ export class AddUpdateDialogComponent implements OnInit {
 
   onSubmitUpdate(): void {
     if (this.updateUser !== undefined) {
-      console.log(this.updateUser);
-      this.userService.updateUser(this.updateUser).subscribe(data => {});
-      this.dialogRef.close();
-      //this.userService.findUsers();
+      this.userService.updateUser(this.updateUser).subscribe({
+        next: (data) => {
+          this.dialogRef.close();
+          this.userService.findUsers();
+        },
+        error: (e) => {
+          alert(this.translateService.instant('ERRORS.UPDATE'));
+          location.reload();
+        },
+        complete: () => {}
+      });
     }
   }
 

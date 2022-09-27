@@ -2,11 +2,16 @@
 
     <div class="row table-responsive table-light" style="padding-top:0.5%">
         
-        <article class="table-header">
-            <button (click)="openAddDialog()" id="addUserButton" mat-fab aria-label="addButton">
-                <mat-icon>add</mat-icon>
+        <div id="tab-header">
+            <button (click)="openAddDialog()" id="addUserButton" mat-raised-button aria-label="addButton">
+                {{ 'BUTTONS.ADD' | translate }}
             </button>
-          </article>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search columns" #input>
+        </mat-form-field>
 
         <table class="table table-bordered align-middle mb-0 bg-white" mat-table [dataSource]="users">
             <ng-container matColumnDef="personalNumber">
@@ -47,7 +52,7 @@
     
         <mat-paginator [length]="totalElements"
                        [pageSize]="5"
-                       [pageSizeOptions]="[5, 10, 25, 50]"
+                       [pageSizeOptions]="[5, 10, 15]"
                        >
         </mat-paginator>
     </div>

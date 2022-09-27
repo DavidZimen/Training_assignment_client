@@ -1,16 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light">
-  <div class="container-fluid">
+<header class="header">
+  <div class="wrapper">
+
     <span class="navbar-brand mb-0 h1">{{ 'TITLE' | translate}}</span>
-  </div>
 
-  <div class="language-picker-area">
-    <select (change)="selectLanguage($event)" class="language-picker">
-      <option value="sk">{{ 'LANGUAGES.SK' | translate }}</option>
-      <option value="en">{{ 'LANGUAGES.EN' | translate }}</option>
-      <option value="de">{{ 'LANGUAGES.DE' | translate }}</option>
-    </select>
-  </div>
+    <div class="language-picker-area">
+      <select (change)="selectLanguage($event)" class="language-picker">
+        <option value="sk">{{ 'LANGUAGES.SK' | translate }}</option>
+        <option value="en">{{ 'LANGUAGES.EN' | translate }}</option>
+        <option value="de">{{ 'LANGUAGES.DE' | translate }}</option>
+      </select>
+    </div>
 
-</nav>
+  </div>
+</header>
 
 <router-outlet></router-outlet>

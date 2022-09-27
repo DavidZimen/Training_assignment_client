@@ -3,3 +3,22 @@
     color: red !important;
 }
 
+#updateButton {
+    background-color: green;
+    margin-right: 8%;
+}
+
+#addButton {
+    background-color: green;
+    margin-right: 8%;
+}
+
+.alert {
+    padding: 0px;
+    margin: 0px;
+    color: red;
+}
+
+label {
+    margin-top: 8px;
+}
