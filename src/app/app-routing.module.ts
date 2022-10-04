@@ -12,6 +12,9 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent}
 ];
 
+/**
+ * Routing module with routes to navigate between components in the application.
+ */
 @NgModule({
   imports: [
     CommonModule,

@@ -5,6 +5,9 @@ import { environment } from 'src/environments/environment';
 import { User } from '../user/user';
 import { UserRequest } from '../user/user-request'
 
+/**
+ * Service to connect frontend to backend in Spring Boot.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +15,7 @@ export class UserService {
 
   private userUrl: string = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) {
-    console.log(this.userUrl);
-  }
+  constructor(private http: HttpClient) {}
 
   public findUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.userUrl}/user/all`)

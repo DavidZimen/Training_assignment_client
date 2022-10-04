@@ -1,3 +1,6 @@
+/**
+ * Class to make the request to the server to creare a new user with a given attributes.
+ */
 export class UserRequest {
     name: string | undefined;
     surname: string | undefined;
