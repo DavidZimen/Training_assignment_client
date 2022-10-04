@@ -35,7 +35,8 @@
         "OF": "z"
     }, 
     "ERRORS": {
-        "UPDATE": "Pri upravovaní došlo ku chybe. Skúste to znova neskôr, prosím."
+        "UPDATE": "Pri upravovaní došlo ku chybe. Skúste to znova neskôr, prosím.",
+        "DELETE": "Daný užívateľ bol pravdepodobne vymazaný, načítajte stránku znova."
     },
     "VALID": {
         "NAME": "Meno je povinné.",

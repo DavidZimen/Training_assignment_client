@@ -35,7 +35,8 @@
         "OF": "von"
     },
     "ERRORS": {
-        "UPDATE": "Beim Bearbeiten ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+        "UPDATE": "Beim Bearbeiten ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+        "DELETE": "Der angegebene Benutzer wurde wahrscheinlich gelöscht, bitte laden Sie die Seite neu."
     },
     "VALID": {
         "NAME": "Name ist erforderlich",

@@ -5,6 +5,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
+    <button class="mat-raised-button" id="deleteButton" (click)="onSubmit()" type="submit" color="red">{{ 'BUTTONS.DELETE' | translate }}</button>
     <button class="mat-raised-button"(click)="close()">{{ 'BUTTONS.CLOSE' | translate }}</button>
-    <button class="mat-raised-button" id="deleteButton" (click)="onSubmit()" type="submit" color="warm">{{ 'BUTTONS.DELETE' | translate }}</button>
 </mat-dialog-actions>

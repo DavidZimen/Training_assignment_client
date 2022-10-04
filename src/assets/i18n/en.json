@@ -35,7 +35,8 @@
         "OF": "of"
     }, 
     "ERRORS": {
-        "UPDATE": "An error occurred while updating. Please try again later."
+        "UPDATE": "An error occurred while updating. Please try again later.",
+        "DELETE": "The given user has probably been deleted, please reload the page."
     },
     "VALID": {
         "NAME": "Name is required.",
