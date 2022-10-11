@@ -48,5 +48,6 @@
             "MIN": "Mindestwerte sind 1."
         },
         "CITY": "Stadt ist erforderlich"
-    }
+    },
+    "SEARCH_TABLE": "In Tabelle suchen..."
 }

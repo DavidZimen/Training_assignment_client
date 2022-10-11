@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="d-flex justify-content-between">
-            <div class="p-2 align-self-center"><input class="search" (keyup)="applyFilter($event)" placeholder="Search columns" #input></div>
+            <div class="p-2 align-self-center"><input class="search" (keyup)="applyFilter($event)" placeholder="{{ 'SEARCH_TABLE' | translate }}" #input></div>
             <div class="ml-auto p-2"><button (click)="openAddDialog()" id="addUserButton" mat-raised-button aria-label="addButton">{{ 'BUTTONS.ADD' | translate }}</button></div>
         </div>
 

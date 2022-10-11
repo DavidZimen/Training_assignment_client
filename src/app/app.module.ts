@@ -5,7 +5,7 @@ import { UserListComponent } from '../app/components/user-list/user-list.compone
 import { UserService } from './service/user-service.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table'
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ConfDialogComponent } from './dialogs/conf-dialog/conf-dialog.component';
 import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MatPaginatorIntlService } from './service/mat-paginator-service';
 
 export function httpTranslateLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -73,7 +74,7 @@ const routes: Routes = [
     AppRoutingModule
   ],
   exports: [TranslateModule],
-  providers: [UserService, MatDatepickerModule],
+  providers: [UserService, MatDatepickerModule, { provide: MatPaginatorIntl, useClass: MatPaginatorIntlService }],
   bootstrap: [AppComponent],
   entryComponents: [AddUpdateDialogComponent]
 })

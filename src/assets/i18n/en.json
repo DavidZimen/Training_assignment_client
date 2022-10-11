@@ -48,5 +48,6 @@
             "MIN": "Minimal values is 1."
         },
         "CITY": "City is required."
-    }
+    },
+    "SEARCH_TABLE": "Search in table..."
 }

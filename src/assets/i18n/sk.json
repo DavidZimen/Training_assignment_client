@@ -48,5 +48,6 @@
             "MIN": "Minimálna hodnota je 1."
         },
         "CITY": "Mesto je povinné."
-    }
+    },
+    "SEARCH_TABLE": "Hľadaj v tabuľke..."
 }
