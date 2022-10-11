@@ -23,7 +23,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConfDialogComponent } from './dialogs/conf-dialog/conf-dialog.component';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export function httpTranslateLoaderFactory(http: HttpClient) {

@@ -62,9 +62,9 @@
             <div *ngIf="add; then thenDate else elseDate"></div>
 
             <ng-template #thenDate>
-                <input mat-input [matDatepicker]="datePicker" class="form-control" id="datePicker" name="birthDate" [(ngModel)] = "userRequest.birthDate" required #date="ngModel">
+                <input mat-input [matDatepicker]="datePicker" class="form-control" id="datePicker" name="birthDate" [(ngModel)] = "userRequest.birthDate" required #date="ngModel" disabled>
                 <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-                <mat-datepicker #datePicker></mat-datepicker>
+                <mat-datepicker #datePicker disabled="false"></mat-datepicker>
 
                 <div *ngIf="date.invalid && (date.dirty || date.touched)"class="alert">
                     <div *ngIf="date.errors?.['required']">
@@ -74,9 +74,9 @@
             </ng-template>
 
             <ng-template #elseDate>
-                <input mat-input [matDatepicker]="datePicker" class="form-control" id="datePicker2" name="birthDate" [(ngModel)] = "updateUser!.birthDate" required required #date="ngModel">
+                <input mat-input [matDatepicker]="datePicker" class="form-control" id="datePicker2" name="birthDate" [(ngModel)] = "updateUser!.birthDate" required #date="ngModel" disabled>
                 <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-                <mat-datepicker #datePicker></mat-datepicker>
+                <mat-datepicker #datePicker disabled="false"></mat-datepicker>
 
                 <div *ngIf="date.invalid && (date.dirty || date.touched)"class="alert">
                     <div *ngIf="date.errors?.['required']">
@@ -127,7 +127,7 @@
             </ng-template>
 
             <ng-template #elseHouseNumber>
-                <input type="number" class="form-control" name="houseNumber" [(ngModel)] = "updateUser!.address.number" required min="1" #houseNumber="ngModel">
+                <input type="number" class="form-control" name="houseNumber" [(ngModel)] = "updateUser!.address.houseNumber" required min="1" #houseNumber="ngModel">
                 <div *ngIf="houseNumber.invalid && (houseNumber.dirty || houseNumber.touched)" class="alert">
                     <div *ngIf="houseNumber.errors?.['required']">
                         {{ 'VALID.HOUSENUMBER.REQ' | translate }}
@@ -167,12 +167,17 @@
     <mat-dialog-actions>
         <div *ngIf="add; then thenButton else elseButton"></div>
         <ng-template #thenButton>
-            <button id="addButton" [disabled]="addForm.invalid" class="mat-raised-button" (click)="onSubmit()" type="submit">{{ 'BUTTONS.ADD' | translate }}</button>
+            <div class="d-flex">
+                <div class="p-2"><button id="addButton" [disabled]="addForm.invalid" class="mat-raised-button" (click)="onSubmit()" type="submit">{{ 'BUTTONS.ADD' | translate }}</button></div>
+                <div class="p-2"><button class="mat-raised-button"(click)="close()">{{ 'BUTTONS.CLOSE' | translate }}</button></div>
+            </div>
         </ng-template>
         <ng-template #elseButton>
-            <button id="updateButton" [disabled]="addForm.invalid" class="mat-raised-button" (click)="onSubmitUpdate()" type="submit">{{ 'BUTTONS.SAVE' | translate }}</button>
+            <div class="d-flex">
+                <div class="p-2"><button id="updateButton" [disabled]="addForm.invalid" class="mat-raised-button" (click)="onSubmitUpdate()" type="submit">{{ 'BUTTONS.SAVE' | translate }}</button></div>
+                <div class="p-2"><button class="mat-raised-button"(click)="close()">{{ 'BUTTONS.CLOSE' | translate }}</button></div>
+            </div>
         </ng-template>
-        <button class="mat-raised-button"(click)="close()">{{ 'BUTTONS.CLOSE' | translate }}</button>
     </mat-dialog-actions>
 
     </mat-dialog-content>

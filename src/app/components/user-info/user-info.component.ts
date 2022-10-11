@@ -32,6 +32,7 @@ export class UserInfoComponent implements OnInit {
       this.id = params['id'];
       this.userService.findUserById(params['id']).subscribe(user => {
         this.detailedUser = user;
+        console.log(user);
       });
     });
   }
